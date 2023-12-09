@@ -14,7 +14,37 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
     <style>
         body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+                .iframe-container {
+            position: fixed;
+            bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+            right: 20px; /* Ajusta la distancia desde la derecha */
+            background-color: #fff; /* Color de fondo del contenedor del iframe */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+            border-radius: 10px; /* Bordes redondeados */
+            overflow: hidden; /* Evita que el contenido se desborde */
+        }
+        iframe {
+            border: none; /* Elimina el borde del iframe */
+            width: 400px; /* Ancho del iframe (modificado) */
+            height: 500px; /* Altura del iframe (modificada) */
+        }
+        .toggle-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #3498db; /* Color del botón de minimizar */
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .iframe-icon {
+            position: absolute;
+            top: 20px;
+            right: 60px;
     </style>
+
 
 </head>
 <!--<body style="background-image:url('https://irp-cdn.multiscreensite.com/b4a272ea/MOBILE/jpg/1829674-image1_%281%29.jpg')">-->
@@ -49,5 +79,28 @@
 
     <!-- End Content -->
 </div>
+<div class="iframe-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/1698/1698535.png" class="iframe-icon" alt="Icono de Chatbot" width="50px" height="50px"> <!-- Ruta de la imagen del icono -->
+    <iframe src="https://chatbotmai.azurewebsites.net/"></iframe> <!-- Reemplaza "URL_DEL_CHATBOT.html" con la ruta del primer HTML donde está tu chatbot -->
+    <button class="toggle-button" onclick="toggleIframe()">Minimizar</button>
+</div>
+
+<script>
+        const iframeContainer = document.querySelector(".iframe-container");
+        let minimized = false;
+
+        // Función para minimizar/maximizar el iframe
+        function toggleIframe() {
+            if (minimized) {
+                iframeContainer.style.height = "500px"; // Ajusta la altura (modificado)
+                document.querySelector(".toggle-button").innerText = "Minimizar";
+                minimized = false;
+            } else {
+                iframeContainer.style.height = "40px"; // Ajusta la altura
+                document.querySelector(".toggle-button").innerText = "Maximizar";
+                minimized = true;
+            }
+        }
+    </script>
 </body>
 </html>

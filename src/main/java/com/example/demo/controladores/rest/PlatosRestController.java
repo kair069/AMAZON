@@ -16,11 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
+@CrossOrigin(origins = "*")
 @RequestMapping("/rest/platos")
 public class PlatosRestController {
     @Autowired
     private PlatosServicios servicio;
 
+    @CrossOrigin(origins = "*")
     @RequestMapping("/listarTodo")
     public String listarPlatos (Model model) {
 
@@ -80,19 +82,22 @@ public class PlatosRestController {
 
     }
     */
+    @CrossOrigin(origins = "*")
     @RequestMapping("/nuevo")
     public String nuevaPelicula(Model model) {
         Platos platos = new Platos ();
         model.addAttribute("platos",platos);
         return "/moduloPlatos/nuevoPlato";
     }
-
+    @CrossOrigin(origins = "*")
     @RequestMapping(value ="/guardar", method= RequestMethod.POST)
     public String crearPelicula(@ModelAttribute("platos") Platos platos) {
         servicio.crear(platos);
         return "redirect:/rest/platos/listarTodo";
 
     }
+
+    @CrossOrigin(origins = "*")
     //actualizar por ID --------------USANDO
     @RequestMapping(value ="/actualizar/{id}")
     public ModelAndView editarPelicula(@PathVariable(name="id") int id) {
